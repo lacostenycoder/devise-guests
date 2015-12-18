@@ -21,7 +21,7 @@ module DeviseGuests::Controllers
 
           if session[:guest_#{mapping}_id]
             @guest_#{mapping} = #{class_name}.find_by(#{class_name}.authentication_keys.first => session[:guest_#{mapping}_id]) rescue nil
-            @guest_#{mapping} = nil if @guest_#{mapping}.respond_to? :guest and !@guest_#{mapping}.guest 
+            @guest_#{mapping} = nil if @guest_#{mapping}.respond_to? :guest and !@guest_#{mapping}.guest
           end
 
           @guest_#{mapping} ||= begin
@@ -54,7 +54,7 @@ module DeviseGuests::Controllers
             g.send("\#{auth_key}=", send(:"guest_\#{auth_key}_authentication_key", key))
             g.guest = true if g.respond_to? :guest
             g.skip_confirmation! if g.respond_to?(:skip_confirmation!)
-            g.save(validate: false)
+            #g.save(validate: false)
           end
         end
 
