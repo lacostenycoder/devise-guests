@@ -67,7 +67,7 @@ module DeviseGuests::Controllers
             g.send("\#{auth_key}=", send(:"guest_\#{auth_key}_authentication_key", key))
             g.guest = true if g.respond_to? :guest
             g.skip_confirmation! if g.respond_to?(:skip_confirmation!)
-            g.save(validate: false)
+            #g.save(validate: false)
           end
         end
 
